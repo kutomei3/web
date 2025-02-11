@@ -234,13 +234,13 @@ body {
   }
   100% {
     z-index: 10;
-    transform: translateY(0px);
+    transform: translateY(100px);
   }
 }
 
 @keyframes movein {
   0% {
-    transform: translateY(0px);
+    transform: translateY(100px);
     z-index: 20;
   }
   60% {
