@@ -1,74 +1,276 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #1d1d29;
-    color: white;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .table-container {
-    max-width: 60%;
-    margin: 5% auto;
-    background-color: #2a2a3e;
-    padding: 1%;
-    border-radius: 2%;
-    box-shadow: 0 2% 5% rgba(0, 0, 0, 0.3);
-    margin-left: 3%;
-  }
-  
-  .custom-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fae1dd;
+}
 
-  .custom-table th {
-    background-color: #32324a;
-  }
-  
-  .custom-table th, .custom-table td {
-    text-align: left;
-    padding: 2%;
-    border-bottom: 1% solid #3a3a4f;
+.container {
+  position: relative;
+}
 
-    animation: 2s hinp ease-in-out infinite;
-    animation-play-state: paused;
-  }
-  
-  .custom-table tbody th:hover {
-    animation-play-state: running;
-    background-color: #3d3d55;
-  }
+.valentines {
+  position: relative;
+  top: 50px;
+  animation: up 3s linear infinite;
+}
 
-  @keyframes hinp {
-    100% {
-      transform: translateX(2%);
-    }
-  }
-  
-  .file-info {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .file-name {
-    font-weight: bold;
-    color: #a6ddff; 
-  }
+.valentines.open {
+  animation-play-state: paused;
+}
 
-  .file-tag {
-    font-weight: bold;
-    font-size: 60%;
-    color: #b7f5ff; 
+.valentines.open .shadow {
+  animation-play-state: paused;
+}
+
+.envelope {
+  position: relative;
+  width: 300px;
+  height:200px;
+  background-color: #f08080; 
+}
+
+.flap {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 100px solid #ff7171;
+  border-left: 145px solid transparent;
+  border-right: 145px solid transparent;
+  padding: 5px;
+  top: 0;
+  left: 0;
+  z-index: 12;
+  transition: 1s;
+  transform-origin: top;
+}
+
+.flap.open {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.card {
+  position: absolute;
+  background-color: #eae2b7;
+  width: 270px;
+  height: 170px;
+  top:5px;
+  left:15px;
+  box-shadow: -5px -5px 100px rgba(0,0,0,0.4);
+}
+
+.card:before {
+  content:"";
+  position: absolute;
+  border:3px solid #003049;
+  border-style: dotted;
+  width: 240px;
+  heighT: 140px;
+  left:12px;
+  top:12px;
+}
+
+.text {
+  position: absolute;
+  font-family: 'Brush Script MT', cursive;
+  font-size: 28px;
+  text-align: center;
+  line-height:25px;
+  top:19px;
+  left:85px;
+  color: #003049;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: #d62828;
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+}
+
+.heart:before {
+  top: -15px;
+  left: 0;
+}
+
+.heart:after {
+  left: 15px;
+  top: 0;
+}
+.front {
+  position: absolute;
+  border-right: 180px solid #f4978e;
+  border-top: 95px solid transparent;
+  border-bottom: 100px solid transparent;
+  left:120px;
+  top:5px;
+  width:0;
+  height:0;
+  z-index:10;
+}
+
+.front:before {
+  position: absolute;
+  content:"";
+  border-left: 300px solid #f8ad9d;
+  border-top: 195px solid transparent;
+  left:-120px;
+  top:-95px;
+  width:0;
+  height:0;
+}
+
+.shadow {
+  position: absolute;
+  width: 330px;
+  height: 25px;
+  border-radius:50%;
+  background-color: rgba(0,0,0,0.3);
+  top:265px;
+  left:-15px;
+  animation: scale 3s linear infinite;
+  z-index:-1;
+}
+
+@keyframes up {
+  0%, 100% {
+    transform: translateY(0);
   }
-  
-  .file-size.alert {
-    color: #ff6b6b;
+  50% {
+    transform: translateY(-30px);
   }
-  
-  .skull-button {
-    background-color: transparent;
-    border: none;
-    font-size: 1em;
-    color: #ffebeb;
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: scaleX(1);
   }
+  50% {
+    transform: scaleX(0.85);
+  }
+}
+
+.hearts {
+  position: absolute;
+  opacity: 1;
+  transition: 3s;
+}
+
+.valentines.open .hearts {
+  opacity: 0;
+  transition: 3s;
+}
+
+.one, .two, .three, .four, .five {
+  background-color: red;
+  display: inline-block;
+  height: 10px;
+  margin: 0 10px;
+  position: relative;
+  transform: rotate(-45deg);
+  width: 10px;
+  top:50px;
+}
+
+.one:before,
+.one:after, .two:before, .two:after, .three:before, .three:after, .four:before, .four:after, .five:before, .five:after {
+  content: "";
+  background-color: red;
+  border-radius: 50%;
+  height: 10px;
+  position: absolute;
+  width: 10px;
+}
+
+.one:before, .two:before, .three:before, .four:before, .five:before {
+  top: -5px;
+  left: 0;
+}
+
+.one:after, .two:after, .three:after, .four:after, .five:after {
+  left: 5px;
+  top: 0;
+}
   
+.one {
+  left:10px;
+  animation: heart 1s ease-out infinite; 
+}
+
+.two {
+  left:30px;
+  animation: heart 2s ease-out infinite; 
+}
+
+.three {
+  left:50px;
+  animation: heart 1.5s ease-out infinite;
+}
+
+.four {
+  left:70px;
+  animation: heart 2.3s ease-out infinite;
+}
+
+.five {
+  left:90px;
+  animation: heart 1.7s ease-out infinite;
+}
+
+@keyframes heart {
+  0%{
+    transform: translateY(0) rotate(-45deg) scale(0.3);
+    opacity: 1;
+  }
+  100%{
+    transform: translateY(-150px) rotate(-45deg) scale(1.3);
+    opacity: 0.5;
+  }
+}
+
+.valentines.open .card {
+  animation: 3s moveout forwards;
+  transform: translateY(-170px);
+}
+
+.valentines.close .card {
+  animation: 3s movein forwards;
+  transform: translateY(0px);
+}
+
+@keyframes moveout {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-170px);
+    height: 170px;
+  }
+  100% {
+    height: 2000px;
+    z-index: 20;
+  }
+}
+
+@keyframes movein {
+  0% {
+    transform: translateY(-170px);
+    height: 2000px;
+    z-index: 20;
+  }
+  60% {
+    transform: translateY(-170px);
+    height: 170px;
+    z-index: 10;
+  }
+  100% {
+    height: 170px;
+    z-index: 0;
+    transform: translateY(0px);
+  }
+}
