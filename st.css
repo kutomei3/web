@@ -3,7 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #fae1dd;
+  background-color: rgb(255, 244, 223);
 }
 
 .container {
@@ -20,22 +20,31 @@ body {
   animation-play-state: paused;
 }
 
-.valentines.open .shadow {
-  animation-play-state: paused;
+.shadow {
+  position: absolute;
+  width: 330px;
+  height: 25px;
+  border-radius:50%;
+  background-color: rgba(0,0,0,0.3);
+  top:265px;
+  left:-15px;
+  animation: scale 3s linear infinite;
+  animation-play-state: running;
+  z-index:-1;
 }
 
 .envelope {
   position: relative;
   width: 300px;
   height:200px;
-  background-color: #f08080; 
+  background-color: #4a95ff; 
 }
 
 .flap {
   position: absolute;
   width: 0;
   height: 0;
-  border-top: 100px solid #ff7171;
+  border-top: 100px solid #627dff;
   border-left: 145px solid transparent;
   border-right: 145px solid transparent;
   border-radius: 10px;
@@ -52,27 +61,6 @@ body {
   z-index: 0;
 }
 
-.card {
-  position: absolute;
-  background-color: #eae2b7;
-  width: 270px;
-  height: 170px;
-  top:5px;
-  left:15px;
-  box-shadow: -5px -5px 100px rgba(0,0,0,0.4);
-}
-
-.card:before {
-  content:"";
-  position: absolute;
-  border:3px solid #003049;
-  border-style: dotted;
-  width: 240px;
-  heighT: 140px;
-  left:12px;
-  top:12px;
-}
-
 .text {
   position: absolute;
   font-family: 'Brush Script MT', cursive;
@@ -86,7 +74,7 @@ body {
 
 .front {
   position: absolute;
-  border-right: 180px solid #f4978e;
+  border-right: 180px solid #72adff;
   border-top: 95px solid transparent;
   border-bottom: 100px solid transparent;
   left:120px;
@@ -99,24 +87,12 @@ body {
 .front:before {
   position: absolute;
   content:"";
-  border-left: 300px solid #f8ad9d;
+  border-left: 300px solid #8baeff;
   border-top: 195px solid transparent;
   left:-120px;
   top:-95px;
   width:0;
   height:0;
-}
-
-.shadow {
-  position: absolute;
-  width: 330px;
-  height: 25px;
-  border-radius:50%;
-  background-color: rgba(0,0,0,0.3);
-  top:265px;
-  left:-15px;
-  animation: scale 3s linear infinite;
-  z-index:-1;
 }
 
 @keyframes up {
@@ -215,14 +191,145 @@ body {
   }
 }
 
-.valentines.open .card {
+.valentines.open .p1 {
   animation: 3s moveout forwards;
   transform: translateY(-170px);
 }
 
-.valentines.close .card {
-  animation: 3s movein forwards;
-  transform: translateY(0px);
+.p1 {
+  position: absolute;
+  width: 270px;
+  height: 170px;
+  top:5px;
+  left:15px;
+  background-image: url("img/p1.png");
+  background-size: 270px 170px;
+  z-index: 0;
+}
+
+.nextbutton {
+  position: absolute;
+  appearance: none;
+  background-color: #f9b2ff;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: absolute;
+  bottom: -40px;
+  right: 20px;
+  opacity: 0;
+}
+
+.nextbutton:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.nextbutton:hover {
+  background-color: #f9b2ff;
+}
+
+.nextbutton:focus {
+  box-shadow: rgba(255, 134, 243, 0.4) 0 0 0 3px;
+  outline: none;
+}
+
+.nextbutton:disabled {
+  background-color: #f9b2ff;;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.nextbutton:active {
+  background-color: #f9b2ff;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+.backbutton {
+  position: absolute;
+  appearance: none;
+  background-color: #f9b2ff;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: absolute;
+  bottom: -40px;
+  left: 20px;
+  opacity: 0;
+}
+
+.backbutton:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.backbutton:hover {
+  background-color: #f9b2ff;
+}
+
+.backbutton:focus {
+  box-shadow: rgba(255, 134, 243, 0.4) 0 0 0 3px;
+  outline: none;
+}
+
+.backbutton:disabled {
+  background-color: #f9b2ff;;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.backbutton:active {
+  background-color: #f9b2ff;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+.valentines.open .nextbutton, .valentines.open .backbutton {
+  animation: 4s vis forwards;
+}
+
+@keyframes vis {
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes moveout {
@@ -231,24 +338,12 @@ body {
   }
   40% {
     transform: translateY(-170px);
+    scale: 100%;
+    z-index: 10;
   }
   100% {
-    z-index: 10;
-    transform: translateY(100px);
-  }
-}
-
-@keyframes movein {
-  0% {
-    transform: translateY(100px);
     z-index: 20;
-  }
-  60% {
-    transform: translateY(-170px);
-    z-index: 10;
-  }
-  100% {
-    z-index: 0;
-    transform: translateY(0px);
+    transform: translateY(-60px);
+    scale: 130%;
   }
 }
