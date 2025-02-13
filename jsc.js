@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   nextbutton.onclick = function() {
-    if (ct <= 25) ct = ct + 1;
+    if (ct <= 22) ct = ct + 1;
     p1.style.backgroundImage = `url("img/p${ct + 1}.png")`;
   }
 
